@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      ### config配置服务地址
+      uri: http://127.0.0.1:8010

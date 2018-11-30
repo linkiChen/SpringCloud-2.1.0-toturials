@@ -7,4 +7,12 @@ spring:
     config:
       server:
         git:
-          uri:
+          ### 配置文件的git地址
+          uri: https://github.com/linkiChen/SpringCloud-2.1.0-toturials
+          ### 配置文件存放的路径
+          search-paths: config-server/config
+          ### 拉取分支
+          default-label: master
+          ### 开放git项目则不需要填写用户名及密码
+          username:
+          password:
