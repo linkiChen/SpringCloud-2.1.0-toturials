@@ -13,6 +13,8 @@ public class ConsumerService {
 
     @GetMapping("producerInfo")
     public String producerInfo() {
-        return producerFeign.getProducerInfo();
+        String result = producerFeign.getProducerInfo();
+        System.out.println("result: " + result);
+        return result;
     }
 }
