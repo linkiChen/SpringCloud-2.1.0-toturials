@@ -1,10 +1,11 @@
-package com.jacky.producer.feign;
+package com.jacky.hystrix.feign;
 
+import com.jacky.hystrix.fallback.HystrixFeignFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "${spring.application.name}")
-public interface IProducerFeign {
+@FeignClient(value = "eureka-producer", fallback = HystrixFeignFallback.class)
+public interface HystrixFeign {
 
     @GetMapping("/getProducerInfo")
     String getProducerInfo();

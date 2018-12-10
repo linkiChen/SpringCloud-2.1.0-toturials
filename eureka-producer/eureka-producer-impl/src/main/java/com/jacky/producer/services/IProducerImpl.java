@@ -17,9 +17,23 @@ public class IProducerImpl implements IProducerFeign {
     @Value("${spring.application.name}")
     private String applicationName;
 
+    @Value("${timeout}")
+    private Integer timeout;
+
     @GetMapping("/getProducerInfo")
     public String getProducerInfo() {
         ServiceInstance instance = client.choose(applicationName);
         return "Message info from producer of port: " + instance.getPort();
+    }
+
+    @GetMapping("timeoutReq")
+    public String timeoutReq() {
+        try {
+            System.out.println("Thread sleep " + this.timeout + "ms");
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+        return "timeout request for : " + this.timeout + "ms";
     }
 }
